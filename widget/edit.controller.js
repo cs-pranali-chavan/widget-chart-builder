@@ -8,9 +8,9 @@ Copyright end */
         .module('cybersponse')
         .controller('editChartBuilder100Ctrl', editChartBuilder100Ctrl);
 
-    editChartBuilder100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', 'appModulesService', 'Entity', 'SORT_ORDER', 'CommonUtils', '$state', 'highchartBuilderService'];
+    editChartBuilder100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', 'appModulesService', 'Entity', 'CommonUtils', '$state', 'highchartBuilderService'];
 
-    function editChartBuilder100Ctrl($scope, $uibModalInstance, config, appModulesService, Entity, SORT_ORDER, CommonUtils, $state, highchartBuilderService) {
+    function editChartBuilder100Ctrl($scope, $uibModalInstance, config, appModulesService, Entity, CommonUtils, $state, highchartBuilderService) {
         $scope.cancel = cancel;
         $scope.save = save;
         $scope.config = config;
@@ -19,9 +19,8 @@ Copyright end */
         $scope.header = $scope.config.title ? 'Edit Chart Builder' : 'Add Chart Builder';
         $scope.config.customFilters = $scope.config.customFilters || { 'limit': 1, 'sort': [] };
         $scope.customResourceReset = customResourceReset;
-        $scope.SORT_ORDER = SORT_ORDER;
         getChartTypes();
-        $scope.setSourceJson = setSourceJson;
+        //$scope.setSourceJson = setSourceJson;
         $scope.config.sourceJson = !angular.isArray($scope.config.sourceJson) ? $scope.config.sourceJson : {};
         $scope.jsoneditorOptions = {
             name: 'Fields',
@@ -34,12 +33,6 @@ Copyright end */
             }
         };
         $scope.config.selectedColors = $scope.config.selectedColors || [];
-        if ($scope.config.customFilters.sort.length > 0) {
-            $scope.customSort = { field: $scope.config.customFilters.sort[0].field, direction: $scope.config.customFilters.sort[0].direction };
-        }
-        else {
-            $scope.customSort = {};
-        }
         appModulesService.load().then(function (modules) {
             $scope.modules = modules;
             $scope.moduleFields = {};
@@ -62,7 +55,6 @@ Copyright end */
             if (!$scope.moduleFields[newResource]) {
                 populateFieldLists(newResource);
             }
-            $scope.customSort = {};
         }
 
         function populateFieldLists(resource) {
@@ -78,16 +70,16 @@ Copyright end */
             })
         }
 
-        function setSourceJson(json) {
-            if (angular.isString(json)) {
-                try {
-                    $scope.config.sourceJson = JSON.parse(json);
-                } catch (e) {
-                    // invalid JSON. skip the rest
-                    return;
-                }
-            }
-        }
+        // function setSourceJson(json) {
+        //     if (angular.isString(json)) {
+        //         try {
+        //             $scope.config.sourceJson = JSON.parse(json);
+        //         } catch (e) {
+        //             // invalid JSON. skip the rest
+        //             return;
+        //         }
+        //     }
+        // }
 
         function cancel() {
             $uibModalInstance.dismiss('cancel');
@@ -106,7 +98,6 @@ Copyright end */
                 var uniqueValue = CommonUtils.generateUUID();
                 $scope.config['correlationValue'] = uniqueValue;
             }
-            $scope.config.customFilters.sort = [$scope.customSort];
             $uibModalInstance.close($scope.config);
         }
 

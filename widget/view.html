@@ -2,29 +2,28 @@
         MIT License
         Copyright (c) 2024 Fortinet Inc
 Copyright end -->
-  <link rel="stylesheet" type="text/css" href="chartBuilder-1.0.0/assets/css/chartBuilder.css" />
-  <div class="widget widget-container chart">
-    <div class="display-flex-space-between margin-chart">
-        <div class="padding-right-0 padding-left-0" data-ng-class="page === 'dashboard' ? 'widget-dashboard-title-width' : 'widget-title-width'">
-          <h5 class="margin-top-0 margin-bottom-0 text-overflow" title="{{ config.title }}">
-            {{ config.title }}&nbsp;</h5>
-        </div>
-        <div class="padding-right-0 padding-left-0" data-ng-class="page === 'dashboard' ? 'widget-dashboard-actions-width' : 'widget-actions-width'">
-          <span class="fa btn widget-action-icon btn-sm pull-right" data-ng-click="toggleChartOpenState()" data-ng-class="{'fa-caret-up': showChart, 'fa-caret-down': !showChart}"></span>
-          <span data-ng-hide="page === 'dashboard' || page === 'reporting'" class="icon icon-refresh btn btn-sm widget-action-icon pull-right" ng-click="init()" data-uib-tooltip="Refresh"></span>
-        </div>
-    </div>
+<link rel="stylesheet" type="text/css" href="chartBuilder1.0.0/assets/css/chartBuilder.css" />
+<div class="widget widget-container chart">
+  <div class="display-flex-space-between margin-chart">
+      <div class="padding-right-0 padding-left-0" data-ng-class="page === 'dashboard' ? 'widget-dashboard-title-width' : 'widget-title-width'">
+        <h5 class="margin-top-0 margin-bottom-0 text-overflow" title="{{ config.title }}">
+          {{ config.title }}&nbsp;</h5>
+      </div>
+      <div class="padding-right-0 padding-left-0" data-ng-class="page === 'dashboard' ? 'widget-dashboard-actions-width' : 'widget-actions-width'">
+        <span class="fa btn widget-action-icon btn-sm pull-right" data-ng-click="toggleChartOpenState()" data-ng-class="{'fa-caret-up': showChart, 'fa-caret-down': !showChart}"></span>
+        <span data-ng-hide="page === 'dashboard' || page === 'reporting'" class="icon icon-refresh btn btn-sm widget-action-icon pull-right" ng-click="init()" data-uib-tooltip="Refresh"></span>
+      </div>
+  </div>
 
-    <div class="padding-top-md padding-right-lg padding-bottom-md padding-left-lg ng-scope" data-ng-if="!processing && noData">
-        <div class="watermark">{{errMsg}}</div>
-    </div>
+  <div class="padding-top-md padding-right-lg padding-bottom-md padding-left-lg ng-scope" data-ng-if="!processing && noData">
+      <div class="watermark">{{errMsg}}</div>
+  </div>
 
-    <div class="charts-background fade-in-animation">
-        <div class="padding-top-sm padding-right-md padding-bottom-sm padding-left-md " data-ng-if="processing">
-            <cs-spinner data-show-background="true"></cs-spinner>
-        </div>
-        <div id="{{'chartBuilder-' + config.correlationValue}}" class="chartBuilderBlock" data-ng-hide="config.noData"></div>
-        <div id="noData" data-ng-show="noData">No Data Available</div>
-
-    </div>
+  <div class="charts-background fade-in-animation center" data-ng-if="config.chartType !== 'largeheatmap'">
+      <div class="padding-top-sm padding-right-md padding-bottom-sm padding-left-md " data-ng-if="processing">
+          <cs-spinner data-show-background="true"></cs-spinner>
+      </div>
+      <div id="chartBuilder-{{config.wid}}" class="chartBuilderBlock chart-{{config.chartType}}"></div>
+      <div id="noData" data-ng-show="noData">No Data Available</div>
+  </div>
 </div>

@@ -31,6 +31,42 @@
         {
             "type":"sunburst",
             "title":"Sunburst"
+        },
+        {
+            "type":"advancedpolarchart",
+            "title":"Advanced Polar"
+        },
+        {
+            "type":"packedbubble",
+            "title":"Split Packed Bubble"
+        },
+        {
+            "type":"solidgauge",
+            "title":"Solid Gauge"
+        },
+        {
+            "type":"largeheatmap",
+            "title":"Large Heat Map"
+        },
+        {
+            "type":"dependencywheel",
+            "title":"Dependency Wheel"
+        },
+        {
+            "type":"polarradar",
+            "title":"Polar Radar"
+        },
+        {
+            "type":"spline",
+            "title":"Spline"
+        },
+        {
+            "type":"wordcloud",
+            "title":"Word Cloud"
+        },
+        {
+            "type":"streamgraph",
+            "title":"Stream Graph"
         }
     ]
 }

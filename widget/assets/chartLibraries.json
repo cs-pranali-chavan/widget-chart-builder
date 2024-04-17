@@ -2,12 +2,23 @@
     "libraries": [
         "https://code.highcharts.com/highcharts.js",
         "https://code.highcharts.com/highcharts-3d.js",
+        "https://code.highcharts.com/highcharts-more.js",
+        "https://code.highcharts.com/modules/solid-gauge.js",
         "https://code.highcharts.com/modules/sankey.js",
         "https://code.highcharts.com/modules/arc-diagram.js",
         "https://code.highcharts.com/modules/accessibility.js",
         "https://code.highcharts.com/modules/heatmap.js",
         "https://code.highcharts.com/modules/treemap.js",
         "https://code.highcharts.com/modules/export-data.js",
-        "https://code.highcharts.com/modules/sunburst.js"
+        "https://code.highcharts.com/modules/sunburst.js",
+        "https://code.highcharts.com/modules/pattern-fill.js",
+        "https://code.highcharts.com/modules/data.js",
+        "https://code.highcharts.com/modules/boost-canvas.js",
+        "https://code.highcharts.com/modules/boost.js",
+        "https://code.highcharts.com/modules/dependency-wheel.js",
+        "https://code.highcharts.com/modules/wordcloud.js",
+        "https://code.highcharts.com/modules/streamgraph.js",
+        "https://code.highcharts.com/modules/series-label.js",
+        "https://code.highcharts.com/modules/annotations.js"
     ]
 }

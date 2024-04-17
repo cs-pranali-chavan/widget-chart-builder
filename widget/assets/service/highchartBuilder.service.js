@@ -9,9 +9,9 @@ Copyright end */
         .module('cybersponse')
         .factory('highchartBuilderService', highchartBuilderService);
 
-        highchartBuilderService.$inject = ['$q', '$http', 'API', '$resource', 'ALL_RECORDS_SIZE', 'PromiseQueue', 'Modules'];
+        highchartBuilderService.$inject = ['$http'];
 
-    function highchartBuilderService($q, $http, API, $resource, ALL_RECORDS_SIZE, PromiseQueue, Modules) {
+    function highchartBuilderService($http) {
         var service = {
             getLibraries: getLibraries,
             getChartTypes: getChartTypes
@@ -19,7 +19,7 @@ Copyright end */
         return service;
 
         function getLibraries() {
-            return $http.get('widgets/installed/chartBuilder-1.0.0/assets/chartBuilder.json');
+            return $http.get('widgets/installed/chartBuilder-1.0.0/assets/chartLibraries.json');
         }
 
         function getChartTypes() {

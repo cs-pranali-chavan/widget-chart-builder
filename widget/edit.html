@@ -21,6 +21,17 @@ Copyright end -->
             </div>
         </div>
 
+        <!-- Chart Type-->
+        <div class="form-group"
+            data-ng-class="{ 'has-error':  editWidgetForm.chartType.$invalid && editWidgetForm.chartType.$touched }">
+            <label for="chartType" class="control-label">Chart Type<span class="text-danger">*</span></label>
+            <select name="chartType" id="chartType" class="form-control" required data-ng-model="config.chartType"
+                data-ng-options="chart.type as chart.title for chart in chartList | orderBy: 'title'">
+                <option value="">Select an option</option>
+            </select>
+            <div data-cs-messages="editWidgetForm.chartType"></div>
+        </div>
+
         <!-- Data Source -->
         <div class="form-group"
             data-ng-class="{ 'has-error':  editWidgetForm.customResource.$invalid && editWidgetForm.customResource.$touched }"
@@ -32,7 +43,7 @@ Copyright end -->
                 <option value="">Select an Option</option>
             </select>
             <div data-cs-messages="editWidgetForm.customResource"></div>
-        </div>
+        </div> 
 
         <!-- Field for JSON data -->
         <div class="form-group"
@@ -45,68 +56,32 @@ Copyright end -->
                 <option value="">Select an option</option>
             </select>
             <div data-cs-messages="editWidgetForm.customDataField"></div>
-        </div>
+        </div> 
 
-        <!-- Chart Type-->
-        <div class="form-group"
-            data-ng-class="{ 'has-error':  editWidgetForm.chartType.$invalid && editWidgetForm.chartType.$touched }">
-            <label for="chartType" class="control-label">Chart Type<span class="text-danger">*</span></label>
-            <select name="chartType" id="chartType" class="form-control" required data-ng-model="config.chartType"
-                data-ng-options="chart.type as chart.title for chart in chartList | orderBy: 'title'">
-                <option value="">Select an option</option>
-            </select>
-            <div data-cs-messages="editWidgetForm.chartType"></div>
-        </div>
-
-        <!-- JSON input-->
-
-        <div class="form-group"
-            data-ng-class="{ 'has-error': editWidgetForm.sourceJson.$invalid && editWidgetForm.sourceJson.$touched }">
-            <label for="sourceJson" class="control-label">Configuration<span class="text-danger">*</span></label>
-            <div id="sourceJson" data-cs-json-editor data-options="jsoneditorOptions" data-on-change="setSourceJson"
-                data-json="config.sourceJson" class="jinja-json-editor"></div>
-            <div data-cs-messages="editWidgetForm.sourceJson"></div>
-        </div>
 
         <!-- Query section to replace record id selection below -->
         <div class="form-group"
             data-ng-hide="!config.customResource && moduleFieldsArrays[config.customResource].length > 0"
             data-ng-class="{ 'has-error': editWidgetForm.customFilter.$invalid && editWidgetForm.customFilters.$touched }">
-            <!-- Filters -->
-            <label for="customFilters" class="control-label">Record Selection Filter</label>
+            <label for="customFilters" class="control-label">Record Selection Filter<span
+                class="text-danger">*</span></label>
             <div data-cs-conditional data-ng-if="moduleFieldsArrays[config.customResource].length > 0"
                 data-fields="moduleFields[config.customResource]" data-mode="'queryFilters'"
                 data-ng-model="config.customFilters" data-parent-form="editWidgetForm"
                 data-enable-expression="(page==='dashboard')"
                 data-reset-field="config.customResource" data-show-uuid="true" data-form-name="'editWidgetForm'"></div>
             <div data-cs-messages="editWidgetForm.customFilters"></div>
+        </div> 
 
-            <!-- Sorting -->
-            <label for="customRecordSort" class="control-label">Take First Record When Sorted on Field:</label>
-            <div class="row">
-                <div class="pull-left col-lg-6 col-md-4 col-sm-5">
-                    <div class="form-group margin-bottom-0"
-                        data-ng-class="{'has-error': editWidgetForm.customSort.$touched && !editWidgetForm.customSort.$valid }">
-                        <select name="customSort" class="form-control" ng-model="customSort.field" required
-                            data-ng-options="field.name as field.title for field in moduleFieldsArrays[config.customResource] | orderBy: 'title'"
-                            data-cs-focus>
-                            <option value="" disabled selected>Select</option>
-                        </select>
-                        <div data-cs-messages="editWidgetForm.customSort"></div>
-                    </div>
-                </div>
-                <div class="pull-right col-lg-6 col-md-8 col-sm-7 padding-right-0">
-                    <div class="radio margin-top-12">
-                        <label class="checkbox-inline" data-ng-repeat="order in SORT_ORDER">
-                            <input type="radio" data-ng-model="customSort.direction"
-                                data-ng-value="order.value" />&nbsp;{{order.label}}&nbsp;&nbsp;&nbsp;&nbsp;
-                        </label>
-                        <span class="icon icon-close text-danger" data-ng-click="removeDefaultSort(defaultSortObj)"
-                            role="button" tabindex="0"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- JSON input-->
+        <!-- <div class="form-group"
+            data-ng-class="{ 'has-error': editWidgetForm.sourceJson.$invalid && editWidgetForm.sourceJson.$touched }" style="height:500px;">
+            <label for="sourceJson" class="control-label">Configuration<span class="text-danger">*</span></label>
+            <div id="sourceJson" data-cs-json-editor data-options="jsoneditorOptions" data-on-change="setSourceJson"
+                data-json="config.sourceJson" class="jinja-json-editor"></div>
+            <div data-cs-messages="editWidgetForm.sourceJson"></div>
+        </div> -->
+       
     </div>
     <div class="modal-footer">
         <button id="edit-widget-save" type="submit" class="btn btn-sm btn-primary"><i
